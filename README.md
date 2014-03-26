@@ -1,4 +1,4 @@
-# Selligent Interactie Marketing PHP Client
+# Selligent Interactive Marketing PHP Client
 A library to help you interact with the SIM (Selligent Interactive Marketing) Soap webservice.
 
 # Usage
