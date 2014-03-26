@@ -106,12 +106,9 @@ class IndividualClient extends SimProxy{
   }
 
   /**
-  * @param string | int $lid ID or Code of the targeted list
-  * @param array $filter Filter applied to the user‟s selection. This is represented by an array of keys and values
-  * @param int $maxcount the maximum amount of records to retrieve
-  * @return ResultIDs Array containing the users retrieved
-  * @return ErrorStr Error description (only when process fails)
-  */
+   * @return ResultIDs Array containing the users retrieved
+   * @return ErrorStr Error description (only when process fails)
+   */
   public function getUsersByFilter() {
     if ($this->lid == '') throw new Exception('Not all properties are set for this method.');
 
@@ -137,12 +134,9 @@ class IndividualClient extends SimProxy{
   }
 
   /**
-  * @param string | int $lid ID or Code of the targeted list
-  * @param array $filter Filter applied to the user‟s selection. This is represented by an array of keys and values
-  * @param int $maxcount the maximum amount of records to retrieve
-  * @return ResultSet Array containing the user information
-  * @return ErrorStr Error description (only when process fails)
-  */
+   * @return ResultSet Array containing the user information
+   * @return ErrorStr Error description (only when process fails)
+   */
   public function getUserByFilter() {
     if ($this->lid == '') throw new Exception('Not all properties are set for this method.');
 
@@ -167,12 +161,9 @@ class IndividualClient extends SimProxy{
   }
 
   /**
-  * @param string | int $lid ID or Code of the targeted list
-  * @param string $Constraint Constraint applied to the user‟s selection. The constraint corresponds to the sql WHERE statement
-  * @param int $maxcount the maximum amount of records to retrieve
-  * @return ResultIDs Array containing the users retrieved
-  * @return ErrorStr Error description (only when process fails)
-  */
+   * @return ResultIDs Array containing the users retrieved
+   * @return ErrorStr Error description (only when process fails)
+   */
   public function getUsersByConstraint() {
     if ($this->lid == '') throw new Exception('Not all properties are set for this method.');
 
@@ -198,12 +189,9 @@ class IndividualClient extends SimProxy{
   }
 
   /**
-  * @param string | int $lid ID or Code of the targeted list
-  * @param string $Constraint Constraint applied to the users selection. The constraint corresponds to the sql WHERE statement
-  * @param int $maxcount the maximum amount of records to retrieve
-  * @return ResultSet Array containing the user information
-  * @return ErrorStr Error description (only when process fails)
-  */
+   * @return ResultSet Array containing the user information
+   * @return ErrorStr Error description (only when process fails)
+   */
   public function getUserByConstraint() {
     if ($this->lid == '') throw new Exception('Not all properties are set for this method.');
 
@@ -227,8 +215,6 @@ class IndividualClient extends SimProxy{
   }
 
   /**
-   * @param string | int $lid ID or Code of the targeted list
-   * @param int $uid ID for the user to retrieve (messagent id, not drupal id)
    * @return ResultSet Array containing the user information
    * @return ErrorStr Error description (only when process fails)
    */
@@ -255,10 +241,9 @@ class IndividualClient extends SimProxy{
   }
 
   /**
-  * @param array $properties fields for the user
-  * @return ID ID of the newly created user ErrorStr
-  * @return Error description (only when process fails)
-  */
+   * @return ID ID of the newly created user ErrorStr
+   * @return Error description (only when process fails)
+   */
   public function createUser() {
     if ($this->lid == '' || sizeof($this->properties) == 0) throw new Exception('Not all properties are set for this method.');
 
@@ -273,10 +258,9 @@ class IndividualClient extends SimProxy{
   }
 
   /**
-  * @param array $properties fields for the user
-  * @return ID ID of the newly created user ErrorStr
-  * @return Error description (only when process fails)
-  */
+   * @return ID ID of the newly created user ErrorStr
+   * @return Error description (only when process fails)
+   */
   public function updateUser() {
     if ($this->lid == '' || sizeof($this->properties) == 0 || $this->uid == '') throw new Exception('Not all properties are set for this method.');
 
@@ -289,12 +273,9 @@ class IndividualClient extends SimProxy{
   }
 
   /**
-  * @param string | int $gate Name of the targeted gate
-  * @param int $lid ID or Code of the targeted list
-  * @param int $uid ID of the targeted user
-  * @return HashCode Hashcode used to access a module by doing a HTTP call on the SIM WebAgent
-  * @return ErrorStr Error description (only when process fails)
-  */
+   * @return HashCode Hashcode used to access a module by doing a HTTP call on the SIM WebAgent
+   * @return ErrorStr Error description (only when process fails)
+   */
   public function retrieveHashForUser() {
     if ($this->lid == '' || $this->gate == '' || $this->uid == '') throw new Exception('Not all properties are set for this method.');
 
@@ -309,10 +290,8 @@ class IndividualClient extends SimProxy{
   }
 
   /**
-  * @param string | int $gate Name of the targeted gate
-  * @param array $properties parameters for the campaign
-  * @return ErrorStr Error description (only when process fails)
-  */
+   * @return ErrorStr Error description (only when process fails)
+   */
   public function triggerCampaign() {
     if ($this->gate == '' || sizeof($this->properties) == 0) throw new Exception('Not all properties are set for this method.');
 
@@ -324,10 +303,8 @@ class IndividualClient extends SimProxy{
   }
 
   /**
-  * @param string | int $gate Name of the targeted gate
-  * @param string $xml parameters (xml format) for the campaign
-  * @return ErrorStr Error description (only when process fails)
-  */
+   * @return ErrorStr Error description (only when process fails)
+   */
   public function triggerCampaignByXML() {
     if ($this->lid == '' || $this->gate == '' || $this->uid == '' || sizeof($this->properties) == 0) Exception('Not all properties are set for this method.');
 
@@ -338,12 +315,6 @@ class IndividualClient extends SimProxy{
     return $result;
   }
 
-  /**
-  * @param string | int $gate Name of the targeted gate
-  * @param int $uid ID of the targeted user
-  * @param string | int $lid ID or Code of the targeted list
-  * @param array $properties data for the campaign
-  */
   public function triggerCampaignForUser() {
     if ($this->lid == '' || $this->gate == '' || $this->uid == '' || sizeof($this->properties) == 0) throw new Exception('Not all properties are set for this method.');
 
@@ -357,8 +328,8 @@ class IndividualClient extends SimProxy{
   }
 
   /**
-  * @return string the current system status
-  */
+   * @return string the current system status
+   */
   public function getSystemStatus() {
     $result = $this->call('GetSystemStatus', NULL);
 
