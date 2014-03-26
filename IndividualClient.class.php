@@ -295,7 +295,7 @@ class IndividualClient extends SimProxy{
   * @return HashCode Hashcode used to access a module by doing a HTTP call on the SIM WebAgent
   * @return ErrorStr Error description (only when process fails)
   */
-  public function retrieveHashForUser($gate, $lid, $uid) {
+  public function retrieveHashForUser() {
     if ($this->lid == '' || $this->gate == '' || $this->uid == '') throw new Exception('Not all properties are set for this method.');
 
     $input['GateName'] = $this->gate;
