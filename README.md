@@ -93,12 +93,72 @@ $result = $query->setList(295)
 ```
 
 ### Find a list of users by constraint
-Using the getUserByConstraint() method you can use statements like "LIKE".
 ```
 $query = new IndividualClient($config);
 $result = $query->setList(295)
                 ->setConstraint("MAIL like '%gmail%'")
                 ->getUsersByConstraint();
+```
+
+### Retrieve a Hash
+Retrieve a hashcode for a specific user
+```
+$query = new IndividualClient($config);
+$result = $query->setList(295)
+                ->setGate(5)
+                ->setUserId(21)
+                ->retrieveHashForUser();
+```
+
+### Trigger Campaign.
+This method is not tried or tested but is implemented according to the docs of the Selligent webservice. In theory this method needs the following properties to be set:
+```
+$query->addProperty($key, $value);
+$query->setGate($gateId);
+$query->triggerCampaign();
+```
+
+### Trigger Campaign by XML.
+This method is not tried or tested but is implemented according to the docs of the Selligent webservice. In theory this method needs the following properties to be set:
+```
+$query->setXml($key, $value);
+$query->setGate($gateId);
+$query->triggerCampaignByXML();
+```
+
+### Trigger Campaign for User.
+This method is not tried or tested but is implemented according to the docs of the Selligent webservice. In theory this method needs the following properties to be set:
+```
+$query->setUserId($uid);
+$query->setGate($gateId);
+$query->addProperty($key, $value);
+$query->triggerCampaignForUser();
+```
+
+## Broadcast Client Methods
+I have not used or tested any of the Broadcast Client functionality but I did implement them in the library. So be carefull with them!!
+
+### Create Campaign
+```
+$query = new IndividualClient($config);
+$result = $query->setCampaignId($campaignId)
+                ->setXml($xml)
+                ->createCampaign();
+```
+
+### Set Campaign State
+```
+$query = new IndividualClient($config);
+$result = $query->setCampaignId($campaignId)
+                ->setState($state)
+                ->setCampaignState();
+```
+
+### Process User Data
+```
+$query = new IndividualClient($config);
+$result = $query->setXml($xml)
+                ->processUserData();
 ```
 
 # The future
