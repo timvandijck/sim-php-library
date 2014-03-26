@@ -14,7 +14,7 @@ To setup the library include the file of the PHP-class you need (BroadcastClient
 
 You also have to create a configarray with your webservice url and credentials.
 
-```
+```PHP
 require_once('IndividualClient.class.php');
 require_once('BroadcastClient.class.php');
 
@@ -30,7 +30,7 @@ $config = array(
 ### Check the status
 The easiest thing to check is the status of the webservice.
 
-```
+```PHP
 $query = new IndividualClient($config);
 $result = $query->getSystemStatus();
 ```
@@ -38,7 +38,7 @@ $result = $query->getSystemStatus();
 ### Adding a user to a list
 If you want to add a user to a list you have to define the list id and add the properties to the query object. You can find the list ID in your manager by clicking the map your list is in.
 
-```
+```PHP
 $query = new IndividualClient($config);
 $result = $query->setList(295)
                 ->addProperty('NAME', 'R2D2')
@@ -47,7 +47,7 @@ $result = $query->setList(295)
 ```
 
 ### Get a user by ID
-```
+```PHP
 $query = new IndividualClient($config);
 $result = $query->setList(295)
                 ->setUserId(21)
@@ -55,7 +55,7 @@ $result = $query->setList(295)
 ```
 
 ### Update a user
-```
+```PHP
 $query = new IndividualClient($config);
 $result = $query->setList(295)
                 ->setUserId(21)
@@ -66,7 +66,7 @@ $result = $query->setList(295)
 
 ### Find a user with a filter
 Get a user by defining a filter.
-```
+```PHP
 $query = new IndividualClient($config);
 $result = $query->setList(295)
                 ->addFilter('MAIL', 'r2d2@gmail.com')
@@ -75,7 +75,7 @@ $result = $query->setList(295)
 
 ### Find users by filter
 You can also get an array of user ID's by defining filters.
-```
+```PHP
 $query = new IndividualClient($config);
 $result = $query->setList(295)
                 ->addFilter('GENDER', 'male')
@@ -85,7 +85,7 @@ $result = $query->setList(295)
 
 ### Find a user by constraint
 Using the getUserByConstraint() method you can use statements like "LIKE".
-```
+```PHP
 $query = new IndividualClient($config);
 $result = $query->setList(295)
                 ->setConstraint("MAIL like 'r2d2@gmail.com'")
@@ -93,7 +93,7 @@ $result = $query->setList(295)
 ```
 
 ### Find a list of users by constraint
-```
+```PHP
 $query = new IndividualClient($config);
 $result = $query->setList(295)
                 ->setConstraint("MAIL like '%gmail%'")
@@ -102,7 +102,7 @@ $result = $query->setList(295)
 
 ### Retrieve a Hash
 Retrieve a hashcode for a specific user
-```
+```PHP
 $query = new IndividualClient($config);
 $result = $query->setList(295)
                 ->setGate(5)
@@ -112,7 +112,7 @@ $result = $query->setList(295)
 
 ### Trigger Campaign.
 This method is not tried or tested but is implemented according to the docs of the Selligent webservice. In theory this method needs the following properties to be set:
-```
+```PHP
 $query->addProperty($key, $value);
 $query->setGate($gateId);
 $query->triggerCampaign();
@@ -120,7 +120,7 @@ $query->triggerCampaign();
 
 ### Trigger Campaign by XML.
 This method is not tried or tested but is implemented according to the docs of the Selligent webservice. In theory this method needs the following properties to be set:
-```
+```PHP
 $query->setXml($key, $value);
 $query->setGate($gateId);
 $query->triggerCampaignByXML();
@@ -128,7 +128,7 @@ $query->triggerCampaignByXML();
 
 ### Trigger Campaign for User.
 This method is not tried or tested but is implemented according to the docs of the Selligent webservice. In theory this method needs the following properties to be set:
-```
+```PHP
 $query->setUserId($uid);
 $query->setGate($gateId);
 $query->addProperty($key, $value);
@@ -139,7 +139,7 @@ $query->triggerCampaignForUser();
 I have not used or tested any of the Broadcast Client functionality but I did implement them in the library. So be carefull with them!!
 
 ### Create Campaign
-```
+```PHP
 $query = new IndividualClient($config);
 $result = $query->setCampaignId($campaignId)
                 ->setXml($xml)
@@ -147,7 +147,7 @@ $result = $query->setCampaignId($campaignId)
 ```
 
 ### Set Campaign State
-```
+```PHP
 $query = new IndividualClient($config);
 $result = $query->setCampaignId($campaignId)
                 ->setState($state)
@@ -155,7 +155,7 @@ $result = $query->setCampaignId($campaignId)
 ```
 
 ### Process User Data
-```
+```PHP
 $query = new IndividualClient($config);
 $result = $query->setXml($xml)
                 ->processUserData();
