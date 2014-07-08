@@ -122,6 +122,11 @@ $result = $query->setList(295)
                 ->getUsersByFilter();
 ```
 
+By default the API will return up to 10 results. If you want more or less you can set the maximum count:
+```PHP
+$query->setMaxcount(20);
+```
+
 ### Find a user by constraint
 Using the getUserByConstraint() method you can use statements like "LIKE".
 ```PHP
@@ -137,6 +142,11 @@ $query = new IndividualClient($config);
 $result = $query->setList(295)
                 ->setConstraint("MAIL like '%gmail%'")
                 ->getUsersByConstraint();
+```
+
+By default the API will return up to 10 results. If you want more or less you can set the maximum count:
+```PHP
+$query->setMaxcount(20);
 ```
 
 ### Retrieve a Hash
