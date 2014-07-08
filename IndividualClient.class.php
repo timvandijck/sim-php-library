@@ -176,7 +176,7 @@ class IndividualClient extends SimProxy{
     $result = $this->call('GetUsersByConstraint', $input);
 
     if (isset($result->ErrorStr) && $result->ErrorStr != 'No user found' && $result->ErrorStr != '') {
-      throw new Exception($result->ErrorStr);
+      throw new \Exception($result->ErrorStr);
     }
 
     if (isset($result->ResultIDs->int)) {
