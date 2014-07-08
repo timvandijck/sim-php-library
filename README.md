@@ -56,6 +56,24 @@ $result = $query->setList(295)
                 ->setUserId(21)
                 ->getUserById();
 ```
+Example response:
+```
+Array
+(
+    [ID] => 34327
+    [MAIL] => r2d2@gmail.com
+    [NAME] => 
+    [OPTOUT] => 
+    [TESTUSER] => 0
+    [ONLY_TEXT] => 
+    [OPTOUT_SOURCE] => 
+    [SUBSCRIBE_SOURCE] => 
+    [CREATED_DT] => 18/10/2013 14:52:53
+    [MODIFIED_DT] => 3/12/2013 11:52:49
+    [OPTOUT_DT] => 
+    [OPTIN] => 1
+)
+```
 
 ### Update a user
 ```PHP
@@ -74,6 +92,24 @@ $query = new IndividualClient($config);
 $result = $query->setList(295)
                 ->addFilter('MAIL', 'r2d2@gmail.com')
                 ->getUserByFilter(); 
+```
+Example response:
+```
+Array
+(
+    [ID] => 34327
+    [MAIL] => r2d2@gmail.com
+    [NAME] => 
+    [OPTOUT] => 
+    [TESTUSER] => 0
+    [ONLY_TEXT] => 
+    [OPTOUT_SOURCE] => 
+    [SUBSCRIBE_SOURCE] => 
+    [CREATED_DT] => 18/10/2013 14:52:53
+    [MODIFIED_DT] => 3/12/2013 11:52:49
+    [OPTOUT_DT] => 
+    [OPTIN] => 1
+)
 ```
 
 ### Find users by filter
