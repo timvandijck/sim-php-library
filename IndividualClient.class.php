@@ -120,8 +120,8 @@ class IndividualClient extends SimProxy{
 
     $result = $this->call('GetUsersByFilter', $input);
 
-    if (isset($result->ErrorStr) && $result->ErrorStr != 'No user found' && $result->ErrorStr != '') {
-      throw new \Exception($result->ErrorStr);
+    if (isset($result->ErrorStr) && $result->ErrorStr != '') {
+      return array();
     }
 
     if (isset($result->ResultIDs->int)) {
@@ -147,17 +147,11 @@ class IndividualClient extends SimProxy{
 
     $result = $this->call('GetUserByFilter', $input);
 
-    if (isset($result->ErrorStr) && $result->ErrorStr != 'No user found' && $result->ErrorStr != '') {
-      throw new \Exception($result->ErrorStr);
-    }
-
-    if (isset($result->ErrorStr) && $result->ErrorStr == 'No user found') {
+    if (isset($result->ErrorStr) && $result->GetUserByFilterResult == 10005) {
       return array();
     } else {
       if ($result->ResultSet)
-        $result = $this->fetchUserResultSet($result->ResultSet->Property);
-
-      return $result;
+        return $this->fetchUserResultSet($result->ResultSet->Property);
     }
   }
 
@@ -175,8 +169,8 @@ class IndividualClient extends SimProxy{
 
     $result = $this->call('GetUsersByConstraint', $input);
 
-    if (isset($result->ErrorStr) && $result->ErrorStr != 'No user found' && $result->ErrorStr != '') {
-      throw new \Exception($result->ErrorStr);
+    if (isset($result->ErrorStr) && $result->ErrorStr != '') {
+      return array();
     }
 
     if (isset($result->ResultIDs->int)) {
@@ -202,8 +196,8 @@ class IndividualClient extends SimProxy{
 
     $result = $this->call('GetUserByConstraint', $input);
 
-    if (isset($result->ErrorStr) && $result->ErrorStr != 'No user found' && $result->ErrorStr != '') {
-      throw new \Exception($result->ErrorStr);
+    if (isset($result->ErrorStr) && $result->ErrorStr != '') {
+      return array();
     }
 
     if ($result) {
@@ -228,14 +222,14 @@ class IndividualClient extends SimProxy{
 
     $result = $this->call('GetUserById', $input);
 
-    if (isset($result->ErrorStr) && $result->ErrorStr != 'No user found' && $result->ErrorStr != '') {
-      throw new \Exception($result->ErrorStr);
+    if (isset($result->ErrorStr) && $result->ErrorStr != '') {
+      return array();
     }
 
     if ($result) {
-      $result = $this->fetchUserResultSet($result->ResultSet->Property);
+      return $this->fetchUserResultSet($result->ResultSet->Property);
     } else {
-      $result = array();
+      return array();
     }
 
     return $result;
