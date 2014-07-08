@@ -1,4 +1,5 @@
 <?php
+namespace SimClient;
 
 /**
  * @file
@@ -36,7 +37,7 @@ class BroadcastClient extends SimProxy {
    */
   public function createCampaign() {
     if ($this->xml == '') {
-      throw new Exception('Not all properties are set for this method.');
+      throw new \Exception('Not all properties are set for this method.');
     }
 
     $input = array();
@@ -52,7 +53,7 @@ class BroadcastClient extends SimProxy {
    */
   public function setCampaignState() {
     if ($this->state == '' || $this->campaignId == '') {
-      throw new Exception('Not all properties are set for this method.');
+      throw new \Exception('Not all properties are set for this method.');
     }
 
     $input = array();
@@ -68,7 +69,7 @@ class BroadcastClient extends SimProxy {
    */
   public function processUserData() {
     if ($this->xml == '') {
-      throw new Exception('Not all properties are set for this method.');
+      throw new \Exception('Not all properties are set for this method.');
     }
 
     $input = array();

@@ -1,4 +1,5 @@
 <?php
+namespace SimClient;
 
 /**
  * @file
@@ -110,7 +111,7 @@ class IndividualClient extends SimProxy{
    * @return ErrorStr Error description (only when process fails)
    */
   public function getUsersByFilter() {
-    if ($this->lid == '') throw new Exception('Not all properties are set for this method.');
+    if ($this->lid == '') throw new \Exception('Not all properties are set for this method.');
 
     $input = array();
     $input['List'] = $this->lid;
@@ -120,7 +121,7 @@ class IndividualClient extends SimProxy{
     $result = $this->call('GetUsersByFilter', $input);
 
     if (isset($result->ErrorStr) && $result->ErrorStr != 'No user found' && $result->ErrorStr != '') {
-      throw new Exception($result->ErrorStr);
+      throw new \Exception($result->ErrorStr);
     }
 
     if (isset($result->ResultIDs->int)) {
@@ -138,7 +139,7 @@ class IndividualClient extends SimProxy{
    * @return ErrorStr Error description (only when process fails)
    */
   public function getUserByFilter() {
-    if ($this->lid == '') throw new Exception('Not all properties are set for this method.');
+    if ($this->lid == '') throw new \Exception('Not all properties are set for this method.');
 
     $input = array();
     $input['List'] = $this->lid;
@@ -165,7 +166,7 @@ class IndividualClient extends SimProxy{
    * @return ErrorStr Error description (only when process fails)
    */
   public function getUsersByConstraint() {
-    if ($this->lid == '') throw new Exception('Not all properties are set for this method.');
+    if ($this->lid == '') throw new \Exception('Not all properties are set for this method.');
 
     $input = array();
     $input['List'] = $this->lid;
@@ -193,7 +194,7 @@ class IndividualClient extends SimProxy{
    * @return ErrorStr Error description (only when process fails)
    */
   public function getUserByConstraint() {
-    if ($this->lid == '') throw new Exception('Not all properties are set for this method.');
+    if ($this->lid == '') throw new \Exception('Not all properties are set for this method.');
 
     $input = array();
     $input['List'] = $this->lid;
@@ -202,7 +203,7 @@ class IndividualClient extends SimProxy{
     $result = $this->call('GetUserByConstraint', $input);
 
     if (isset($result->ErrorStr) && $result->ErrorStr != 'No user found' && $result->ErrorStr != '') {
-      throw new Exception($result->ErrorStr);
+      throw new \Exception($result->ErrorStr);
     }
 
     if ($result) {
@@ -219,7 +220,7 @@ class IndividualClient extends SimProxy{
    * @return ErrorStr Error description (only when process fails)
    */
   public function getUserById() {
-    if ($this->lid == '' || $this->uid == '') throw new Exception('Not all properties are set for this method.');
+    if ($this->lid == '' || $this->uid == '') throw new \Exception('Not all properties are set for this method.');
 
     $input = array();
     $input['List'] = $this->lid;
@@ -228,7 +229,7 @@ class IndividualClient extends SimProxy{
     $result = $this->call('GetUserById', $input);
 
     if (isset($result->ErrorStr) && $result->ErrorStr != 'No user found' && $result->ErrorStr != '') {
-      throw new Exception($result->ErrorStr);
+      throw new \Exception($result->ErrorStr);
     }
 
     if ($result) {
@@ -245,13 +246,13 @@ class IndividualClient extends SimProxy{
    * @return Error description (only when process fails)
    */
   public function createUser() {
-    if ($this->lid == '' || sizeof($this->properties) == 0) throw new Exception('Not all properties are set for this method.');
+    if ($this->lid == '' || sizeof($this->properties) == 0) throw new \Exception('Not all properties are set for this method.');
 
     $input['List'] = $this->lid;
     $input['Changes'] = $this->properties;
 
     $result = $this->call('CreateUser', $input);
-    print_r($result);
+
     $result = $result->ID;
 
     return $result;
@@ -262,7 +263,7 @@ class IndividualClient extends SimProxy{
    * @return Error description (only when process fails)
    */
   public function updateUser() {
-    if ($this->lid == '' || sizeof($this->properties) == 0 || $this->uid == '') throw new Exception('Not all properties are set for this method.');
+    if ($this->lid == '' || sizeof($this->properties) == 0 || $this->uid == '') throw new \Exception('Not all properties are set for this method.');
 
     $input['List'] = $this->lid;
     $input['Changes'] = $this->properties;
@@ -277,7 +278,7 @@ class IndividualClient extends SimProxy{
    * @return ErrorStr Error description (only when process fails)
    */
   public function retrieveHashForUser() {
-    if ($this->lid == '' || $this->gate == '' || $this->uid == '') throw new Exception('Not all properties are set for this method.');
+    if ($this->lid == '' || $this->gate == '' || $this->uid == '') throw new \Exception('Not all properties are set for this method.');
 
     $input['GateName'] = $this->gate;
     $input['List'] = $this->lid;
@@ -293,7 +294,7 @@ class IndividualClient extends SimProxy{
    * @return ErrorStr Error description (only when process fails)
    */
   public function triggerCampaign() {
-    if ($this->gate == '' || sizeof($this->properties) == 0) throw new Exception('Not all properties are set for this method.');
+    if ($this->gate == '' || sizeof($this->properties) == 0) throw new \Exception('Not all properties are set for this method.');
 
     $input['GateName'] = $this->gate;
     $input['InputData'] = $this->properties;
@@ -306,7 +307,7 @@ class IndividualClient extends SimProxy{
    * @return ErrorStr Error description (only when process fails)
    */
   public function triggerCampaignByXML() {
-    if ($this->lid == '' || $this->gate == '' || $this->uid == '' || sizeof($this->properties) == 0) Exception('Not all properties are set for this method.');
+    if ($this->lid == '' || $this->gate == '' || $this->uid == '' || sizeof($this->properties) == 0) \Exception('Not all properties are set for this method.');
 
     $input['GateName'] = $this->gate;
     $input['Xml'] = $this->data;
@@ -316,7 +317,7 @@ class IndividualClient extends SimProxy{
   }
 
   public function triggerCampaignForUser() {
-    if ($this->lid == '' || $this->gate == '' || $this->uid == '' || sizeof($this->properties) == 0) throw new Exception('Not all properties are set for this method.');
+    if ($this->lid == '' || $this->gate == '' || $this->uid == '' || sizeof($this->properties) == 0) throw new \Exception('Not all properties are set for this method.');
 
     $input['GateName'] = $this->gate;
     $input['List'] = $this->lid;

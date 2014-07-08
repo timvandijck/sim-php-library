@@ -1,4 +1,5 @@
 <?php
+namespace SimClient;
 
 /**
  * @file
@@ -25,25 +26,25 @@ abstract class SimProxy {
     if (isset($config['individual_url'])) {
       $this->individualURL = $config['individual_url'];
     } else {
-      throw new Exception('Credentials not set.');
+      throw new \Exception('Credentials not set.');
     }
 
     if (isset($config['broadcast_url'])) {
       $this->broadcastURL = $config['broadcast_url'];
     } else {
-      throw new Exception('Credentials not set.');
+      throw new \Exception('Credentials not set.');
     }
 
     if (isset($config['login'])) {
       $this->login = $config['login'];
     } else {
-      throw new Exception('Credentials not set.');
+      throw new \Exception('Credentials not set.');
     }
 
     if (isset($config['password'])) {
       $this->password = $config['password'];
     } else {
-      throw new Exception('Credentials not set.');
+      throw new \Exception('Credentials not set.');
     }
 
     $this->connect();
@@ -52,10 +53,10 @@ abstract class SimProxy {
   // @todo document this function.
   public function connect() {
     try {
-      $this->client = new SoapClient($this->getSoapUrl());
+      $this->client = new \SoapClient($this->getSoapUrl());
       $this->client->__setSoapHeaders($this->getHeader());
-    } catch (Exception $e) {
-      throw new Exception('Could not connect: ' . $e->getMessage());
+    } catch (\Exception $e) {
+      throw new \Exception('Could not connect: ' . $e->getMessage());
     }
   }
 
@@ -68,7 +69,7 @@ abstract class SimProxy {
    * Get the Soapheader
    */
   protected function getHeader() {
-    return new SoapHeader('http://tempuri.org/', 'AutomationAuthHeader', array('Login' => $this->login, 'Password' => $this->password));
+    return new \SoapHeader('http://tempuri.org/', 'AutomationAuthHeader', array('Login' => $this->login, 'Password' => $this->password));
   }
 
   // @todo document this function.
@@ -81,7 +82,7 @@ abstract class SimProxy {
     if ($this->client) {
       return $this->client->{$method}($param);
     } else {
-      throw new Exception(t('SOAP Client unavailable'));
+      throw new \Exception(t('SOAP Client unavailable'));
     }
   }
 }

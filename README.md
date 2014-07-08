@@ -15,6 +15,9 @@ To setup the library include the file of the PHP-class you need (BroadcastClient
 You also have to create a configarray with your webservice url and credentials.
 
 ```PHP
+use SimClient\IndividualClient;
+use SimClient\BroadcastClient;
+
 require_once('IndividualClient.class.php');
 require_once('BroadcastClient.class.php');
 
